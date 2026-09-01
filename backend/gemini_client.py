@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from google import genai
+from prompt_builder import build_evaluation_prompt
 
 load_dotenv()
 
@@ -14,7 +15,7 @@ client=genai.Client(api_key=api_key)
 
 response=client.models.generate_content(
     model='gemini-3.6-flash',
-    contents="Who is ultimate star in tamilnadu?"
+    contents=build_evaluation_prompt("What is the most fastest animal in land which existed?")
 )
 
 print(response.text)
